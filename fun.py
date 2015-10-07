@@ -64,4 +64,26 @@ deeper = [deep, deep]
 flatter = [elem for l1 in deeper for l2 in l1 for elem in l2 ]
 print(flatter)
 
+l = [[]]*5
+print(l)
+l[1].append(1) 
+print(l)
+l[2].append(2)
+print(l)
+l[2][0] = 4
+print(l)
+print("")
 
+l = list()
+l.append(1)
+print(l)
+l.append(list())
+print(l)
+l[1].append(2)
+print(l)
+l.append(list())
+l.append(list())
+l[2].append(3)
+print(l)
+l[1].append(4)
+print(l)
