@@ -87,3 +87,7 @@ l[2].append(3)
 print(l)
 l[1].append(4)
 print(l)
+
+from itertools import cycle, islice
+l = range(10)
+print(list(cycle(l)))
