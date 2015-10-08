@@ -90,4 +90,5 @@ print(l)
 
 from itertools import cycle, islice
 l = range(10)
-print(list(cycle(l)))
+
+print(10//2)
