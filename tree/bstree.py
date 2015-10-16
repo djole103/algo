@@ -4,7 +4,14 @@ class BST:
 		self.history = [root.value()]
 
 	def __str__(self,root):
-		pass
+		lvls = self.levels()
+		if len(lvls)==0: return "It's empty dude!!!"
+		maxHeight = lvls[-1][0]
+		tree = [[] for i in range(maxHeight)]
+		for elem in lvls:
+			tree[elem[0]].append(elem[1])
+		stringResult = "".join(str(height)+'\n' for height in tree)
+		return stringResult	
 		
 	def history(self,node):
 		return self.history
@@ -28,20 +35,40 @@ class BST:
 		elif new.value() <= curr.value() : __insert(self,curr.left,new)
 		else                             : __insert(self,curr.right,new)
 
-	def queue(self):
-		q = []
+	def levels(self):
+		height = 0
+		lvls = []
 		if self.root:
-			q.append(root)
-			if root.left: q.append(left)
-			if root.right: q.append(right)
-			q = __queue(q,root.left)
-			return __queue(q,root.right)
+			lvls.append((height,root.value())
+			lvls 
+			
+	def __levels(self,lvls,height):
+		lvls.append(
 
-	def __queue(self,q,curr):
-		if curr.left: q.append(curr.left)
-		if curr.right: q.append(curr.right)
-		q = __queue(q,curr.left)
-		return queue(q, curr.right)
+	def breadthfirst(self)
+		queue = []
+		bfs = []
+		if self.root: 
+			queue.append(self.root)
+			while(queue):
+				node = queue.pop()
+				bfs.append(node)
+				if node.left: queue.append(node.left)
+				if node.right: queue.append(node.right)
+		return bfs
+
+	def levels(self)
+		height = 0
+		queue = []
+		lvls = []
+		if self.root: 
+			queue.append((height,self.root))
+			while(queue):
+				node = queue.pop()
+				lvls.append((node[0],node[1].value()))
+				if node[1].left: queue.append((node[0]+1,node[1].left))
+				if node[1].right: queue.append((node[0]+1,node[1].right))
+		return lvls
 
 	def depth(self):
 		d = []
