@@ -28,6 +28,21 @@ class BST:
 		elif new.value() <= curr.value() : __insert(self,curr.left,new)
 		else                             : __insert(self,curr.right,new)
 
+	def queue(self):
+		q = []
+		if self.root:
+			q.append(root)
+			if root.left: q.append(left)
+			if root.right: q.append(right)
+			q = __queue(q,root.left)
+			return __queue(q,root.right)
+
+	def __queue(self,q,curr):
+		if curr.left: q.append(curr.left)
+		if curr.right: q.append(curr.right)
+		q = __queue(q,curr.left)
+		return queue(q, curr.right)
+
 	def depth(self):
 		d = []
 		if self.root: 
