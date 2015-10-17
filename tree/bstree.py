@@ -66,6 +66,10 @@ class BST:
 			return self.__depth(d,curr.right)
 		else: return d
 
+	def common_ancestor(self,a,b):
+		if self.root: return self.root.common_ancestor(a,b)
+		else        : return None
+
 class Node:
 	def __init__(self,val,left=None,right=None):
 		self.val   = val
@@ -87,12 +91,25 @@ class Node:
 			if self.right: self.right.insert(new)
 			else         : self.right = Node(new)
 
+	def common_ancestor(self,a,b):
+		if self.value() == a or self.value() == b: return self
+		if self.left:
+			left = self.left.common_ancestor(a,b)
+		else: left = None
+		if self.right:
+			right = self.right.common_ancestor(a,b)
+		else: right = None
+		if(left and right): return self
+		elif left: return left
+		else: return right
 bst = BST()
 bst.insert(5)
 bst.insert(3)
-bst.insert(6)
-bst.insert(4)
 bst.insert(10)
-bst.insert(1)
+bst.insert(4)
 bst.insert(6)
+bst.insert(1)
+bst.insert(14)
 print(bst)
+com = bst.common_ancestor(14,6)
+print(com.value())
