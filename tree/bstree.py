@@ -5,6 +5,7 @@ class BST:
 
 	def __str__(self):
 		lvls = self.levels()
+		print(lvls)
 		if len(lvls)==0: return "It's empty dude!!!"
 		maxHeight = lvls[-1][0]+1
 		tree = [[] for i in range(maxHeight)]
@@ -30,7 +31,7 @@ class BST:
 		if self.root: 
 			queue.append(self.root)
 			while(len(queue)!=0):
-				node = queue.pop()
+				node = queue.pop(0)
 				bfs.append(node)
 				if node.left: queue.append(node.left)
 				if node.right: queue.append(node.right)
@@ -44,7 +45,7 @@ class BST:
 			queue.append((height,self.root))
 			while(queue):
 				#(height,node)
-				tup = queue.pop()
+				tup = queue.pop(0)
 				lvls.append((tup[0],tup[1].value()))
 				if tup[1].left: queue.append((tup[0]+1,tup[1].left))
 				if tup[1].right: queue.append((tup[0]+1,tup[1].right))
