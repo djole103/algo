@@ -1,21 +1,16 @@
 class BST:
 	def __init__(self,root=None):
-		if root: 
-			self.root = Node(root)
-			self.history = [root]
-		else:
-			self.root = root
-			self.history = []
+		if root: self.root = Node(root)
+		else   : self.root = root
 
 	def __str__(self):
 		lvls = self.levels()
-		print(lvls)
 		if len(lvls)==0: return "It's empty dude!!!"
 		maxHeight = lvls[-1][0]+1
 		tree = [[] for i in range(maxHeight)]
 		for elem in lvls:
 			tree[elem[0]].append(elem[1])
-		stringResult = "".join(str(height)+'\n' for height in tree)
+		stringResult = "".join('\n'+str(height) for height in tree)
 		return stringResult	
 		
 	def history(self,node):
@@ -25,20 +20,9 @@ class BST:
 		return root
 
 	def insert(self,new):
-		if self.root:
-			if new <= self.root.value() : self.__insert(self.root.left,new)
-			else                        : self.__insert(self.root.right,new)
-		else: 
-			self.root = Node(new)
-			#todo: consider pops
-			self.history.append(new)
+		if self.root: self.root.insert(new)
+		else        : self.root = Node(new)
 
-	def __insert(self,curr,new):
-		if curr is None:
-			curr = Node(new)
-			self.history.append(new)
-		elif new <= curr.value() : self.__insert(curr.left,new)
-		else                     : self.__insert(curr.right,new)
 
 	def breadthfirst(self):
 		queue = []
@@ -62,8 +46,8 @@ class BST:
 				#(height,node)
 				tup = queue.pop()
 				lvls.append((tup[0],tup[1].value()))
-				if node[1].left: queue.append((node[0]+1,node[1].left))
-				if node[1].right: queue.append((node[0]+1,node[1].right))
+				if tup[1].left: queue.append((tup[0]+1,tup[1].left))
+				if tup[1].right: queue.append((tup[0]+1,tup[1].right))
 		return lvls
 
 	def depth(self):
@@ -83,7 +67,7 @@ class BST:
 
 class Node:
 	def __init__(self,val,left=None,right=None):
-		self.val = val
+		self.val   = val
 		self.left  = left
 		self.right = right
 
@@ -93,10 +77,21 @@ class Node:
 
 	def value(self):
 		return self.val
-print("made it")
+
+	def insert(self,new):
+		if new <= self.val:
+			if self.left: self.left.insert(new)
+			else        : self.left = Node(new)
+		else:
+			if self.right: self.right.insert(new)
+			else         : self.right = Node(new)
+
 bst = BST()
 bst.insert(5)
 bst.insert(3)
-#print(bst.root.left.value())
+bst.insert(6)
+bst.insert(4)
+bst.insert(10)
+bst.insert(1)
 bst.insert(6)
 print(bst)
