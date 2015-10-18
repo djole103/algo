@@ -70,6 +70,10 @@ class BST:
 		if self.root: return self.root.common_ancestor(a,b)
 		else        : return None
 
+	def LCA(self,a,b):
+		if self.root: return self.root.LCA(a,b)
+		else        : return None
+
 class Node:
 	def __init__(self,val,left=None,right=None):
 		self.val   = val
@@ -102,6 +106,16 @@ class Node:
 		if(left and right): return self
 		elif left: return left
 		else: return right
+
+	def LCA(self,a,b):
+		if self.value() == a or self.vlaue() == b:
+			return self
+		if a < self.value() and b < self.value():
+			self.left.LCA(a,b)
+		if a > self.value() and b > self.value():
+			self.right.LCA(a,b)
+		return self 
+
 bst = BST()
 bst.insert(5)
 bst.insert(3)
