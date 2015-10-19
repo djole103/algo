@@ -74,6 +74,9 @@ class BST:
 		if self.root: return self.root.LCA(a,b)
 		else        : return None
 
+	def checkBalancedTop(self):
+		return self.root.checkBalancedTop()
+
 class Node:
 	def __init__(self,val,left=None,right=None):
 		self.val   = val
@@ -115,15 +118,45 @@ class Node:
 		if a > self.value() and b > self.value():
 			self.right.LCA(a,b)
 		return self 
+	
+	def checkBalancedTop(self):
+		if self.leaf(): return True
+		height_left = self.left.height()
+		height_right = self.right.height()
+		if abs(heigh_left - height_right) > 1:
+			return False
+		return self.left.checkBalanced and self.right.checkBalanced
+		
+		if self.left and self.right: return  (self.left.checkBalancedTop() and self.right.checkBalancedTop())
+		if self.left:
+			return not (self.left.left or self.left.right)
+		else:
+			return not (self.right.left or self.right.right)
+
 
 bst = BST()
+#bst.insert(5)
+#bst.insert(3)
+#bst.insert(10)
+#bst.insert(4)
+#bst.insert(6)
+#bst.insert(1)
+#bst.insert(14)
+#bst.insert(100)
 bst.insert(5)
-bst.insert(3)
-bst.insert(10)
 bst.insert(4)
+bst.insert(3)
 bst.insert(6)
 bst.insert(1)
-bst.insert(14)
-print(bst)
-com = bst.common_ancestor(14,6)
-print(com.value())
+#		5
+#	  /  \
+#     4	 6
+#	/	  \
+#	3	  3
+#   /
+#   1
+#bst.insert(101)
+print(bst.checkBalancedTop())
+#print(bst)
+#com = bst.common_ancestor(14,6)
+#print(com.value())
