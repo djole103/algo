@@ -92,3 +92,6 @@ from itertools import cycle, islice
 l = range(10)
 
 print(10//2)
+
+for i in range(1):
+	print(i)
