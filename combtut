@@ -1,0 +1,5 @@
+n choose k 
+
+indices = list 0 - k
+pool = set of things
+

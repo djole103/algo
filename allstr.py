@@ -14,9 +14,9 @@ def allstr(string,chars):
 		
 		
 
-chars = ['a','b']
+chars = ['a','b','c']
 allstr("",chars)
 print(rslt)
 
-a = "abcde"
-print(a[:2]+a[3:])
+#a = "abcde"
+#print(a[:2]+a[3:])
