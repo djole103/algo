@@ -13,6 +13,10 @@ class Heap:
 			newIdx    = parentIdx
 			parentIdx = math.floor(parentIdx/2)
 
+	def remove_min(self):
+		root = self.heap[0]
+		if len(self.heap) >= 3:
+			
 
 hehe = Heap(6)
 hehe.insert(29)

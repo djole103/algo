@@ -101,3 +101,14 @@ for i in range(5):
 		break
 	print(i)
 print(i)
+import collections
+d = collections.defaultdict(lambda: 1)
+print(d[1])
+nums =[1,2,3,4,5]
+lets = ['a','b','c']
+print([ l*n for l in lets for n in nums if l])
+def alter(lst):
+	lst.append(1)
+l = [0]
+alter(l)
+print(l)
