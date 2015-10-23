@@ -112,3 +112,7 @@ def alter(lst):
 l = [0]
 alter(l)
 print(l)
+def tt():
+	return (lambda x: i*x for i in range(5))
+for t in tt():
+	print(tt(2))

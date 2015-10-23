@@ -19,3 +19,5 @@ def palindrome(num):
 	if int(reverse) == original: return True
 	else: return False
 
+def count_bits(num):
+	bits = math.ceil(math.log(num,2))
