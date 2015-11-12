@@ -1,3 +1,33 @@
+class Node:
+	def __init__(self,children,value):
+		self.children = children
+		self.value = value
+
+def lcaARB(node,a,b):
+	parent = {}
+	nextVisit = [node]
+	#nodeA = None
+	#nodeB = None
+	while(nextVisit):
+		node = nextVisit.pop()
+		#if node.value == a: nodeA = node
+		#if node.value == b: nodeB = node
+		for child in node.children:
+			parent[child] = node
+			nextVisit.append(child)
+	#ancestorA = parent[nodeA] ect if a,b args are values not nodes
+	ancestorA = a
+	ancestorB = b
+	ancestorsA = {}
+	while(ancestorA in parent):
+		ancestorsA[ancestorA] = True
+		ancestorA = parent[ancestorA]
+	while(ancestorB in parent):
+		if ancestorB in ancestorsA:
+			return ancestorB 
+		ancestorB = parent[ancestorB]
+	return None
+
 #binary 
 def lca(node,a,b):
 	if node == a or node == b: return node
