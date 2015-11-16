@@ -5,7 +5,7 @@ def permutationsRec(elems):
 		if smaller:
 			for perm in smaller:
 				rslt.append(perm[:i] + elems[i] + perm[i:])
-		
+	return rslt		
 
 
 print(permutationsRec([1,2,3]))
