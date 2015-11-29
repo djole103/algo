@@ -14,7 +14,7 @@ def dealCard(deck):
     deck.pop(randomIndex)
     return card
 
-def gameStart():
+def gameStart(numPlayers,cardsPerHand):
     global deck 
     player = dict()
     for i in range(1,numPlayers+1):
@@ -22,13 +22,13 @@ def gameStart():
     
     for i in range(numPlayers*cardsPerHand):
         card = dealCard()
-        player[i%numPlayers].takeCard(card)
+        player[(i%numPlayers) + 1].takeCard(card)
 
 def main(numPlayers,cardsPerHand):
     while(1):
-        wantToPlay = int(input("Do you want to play?\n1: Yes\n2: No\n"))
+        wantToPlay = int(input("Do you want to play?\n1: Yes\n0: No\n"))
         if wantToPlay:
-            gameStart()
+            gameStart(numPlayers,cardsPerHand)
         else: break
 
 if __name__ == "__main__":
