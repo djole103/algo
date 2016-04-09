@@ -17,9 +17,8 @@ def isPermutation(str1, str2):
 def isPermutationLol(str1, str2):
   return sorted(str1) == sorted(str2)
 
-results = []
 def allPermutations(str):
-  if str == "": return str
+  if len(str) <= 1: return str
   perms = []
   for i in range(len(str)):
     perms += [ str[i]+x for x in allPermutations(str[:i] + str[i+1:])]
