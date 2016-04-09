@@ -13,3 +13,6 @@ def permutations(str1, str2):
         if d[l] < 0:
             return False
     return True
+
+def permutationsLol(str1, str2):
+  return sorted(str1) == sorted(str2)
