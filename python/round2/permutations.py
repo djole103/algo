@@ -25,3 +25,18 @@ def allPermutations(str):
   return perms
 
 print(allPermutations("abc"))
+
+def swapPermute(xs, low=0):
+  if low+1 >= len(xs):
+    yield xs
+  else:  
+    for p in swapPermute(xs, low+1):
+      yield p
+    for i in range(low+1,len(xs)):
+      xs[low], xs[i] = xs[i], xs[low]
+      for p in swapPermute(xs, low+1):
+        yield p
+      xs[low], xs[i] = xs[i], xs[low]
+
+for i in swapPermute(['a','b','c']):
+  print(i) 
