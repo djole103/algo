@@ -20,5 +20,11 @@ def differenceBrute(nums, diff):
       if curr_diff == diff:
         print(i,j,nums[j], nums[i])
 
+def differenceHash(nums, diff):
+  numH = { n: True for n in nums}
+  for n in nums:
+    if n - diff in numH or n + diff in numH:
+      print("yas")
 
-differenceBrute(TEST, TEST_DIFF)
+#differenceBrute(TEST, TEST_DIFF)
+differenceHash(TEST, TEST_DIFF)
