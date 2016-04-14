@@ -48,9 +48,21 @@ printTree(root)
 print(LCABalanced(root, 2, 4))
 
 def LCAmemory(root, a, b):
-  pass
-  #parentsA = findParents(root, a)
-  #if b in parentsA
+  if root.data == a:
+    return a
+  if root.data == b:
+    return b
+  parentsA = findParents(root, a)
+  if b in parentsA:
+    return b
+  parentsB = findParents(root, b)
+  if a in parentsB:
+    return a
+  if parentsA == parentsB:
+    return parentsA[-1]
+  for i in range(min(len(parentsA),len(parentsB))):
+    if parentsA[i] != parentsB[i]:
+      return parentsA[i-1]
 
 def findParents(root, a, parents=[]):
   if root.data == a:
@@ -66,6 +78,8 @@ def findParents(root, a, parents=[]):
     tryParents = findParents(root.right, a, parents+[root.data])
     if tryParents:
       return tryParents
+
+print(LCAmemory(root, 2, 4))
 
 def depthTraversal(root, order=[]):
   order.append(root.data)
