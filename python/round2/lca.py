@@ -47,8 +47,29 @@ insertBalanced(root, 16)
 printTree(root)
 print(LCABalanced(root, 2, 4))
 
-def LCA(root, a, b):
-  pass
+def LCAmemory(root, a, b):
+  pass  
+
+def depthTraversal(root, order=[]):
+  order.append(root.data)
+  if root.left:
+    depthTraversal(root.left, order)
+  if root.right:
+    depthTraversal(root.right, order)
+  return order
+
+def breadthFirstTraversal(root):
+  queue = [root]
+  order = []
+  while(queue):
+    node = queue.pop(0)
+    order.append(node.data)
+    if node.left:
+      queue.append(node.left)
+    if node.right:
+      queue.append(node.right)
+  return order
+
 
 def heightDF(root, a):
   pass
