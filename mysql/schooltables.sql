@@ -1,8 +1,9 @@
 use school;
+
+DROP TABLE IF EXISTS StudentCourses; 
 DROP TABLE IF EXISTS Courses;
 DROP TABLE IF EXISTS Teachers;
 DROP TABLE IF EXISTS Students;
-DROP TABLE IF EXISTS StudentCourses; 
 
 CREATE TABLE IF NOT EXISTS Teachers (
 	TeacherID int AUTO_INCREMENT PRIMARY KEY,
@@ -43,3 +44,21 @@ INSERT INTO Students (StudentName) values("Steven Stevenson");
 INSERT INTO Students (StudentName) values("Pat Riley");
 INSERT INTO Students (StudentName) values("Ruben Studdard");
 INSERT INTO Students (StudentName) values("Franklin Roosevelt");
+
+INSERT INTO Courses (CourseName, TeacherID) values ("Business", 1);
+INSERT INTO Courses (CourseName, TeacherID) values ("Physics", 2);
+INSERT INTO Courses (CourseName, TeacherID) values ("Art", 3);
+INSERT INTO Courses (CourseName, TeacherID) values ("Math", 2);
+
+INSERT INTO StudentCourses values (1,1);
+INSERT INTO StudentCourses values (1,2);
+INSERT INTO StudentCourses values (1,3);
+INSERT INTO StudentCourses values (2,1);
+INSERT INTO StudentCourses values (2,2);
+INSERT INTO StudentCourses values (2,3);
+INSERT INTO StudentCourses values (2,4);
+INSERT INTO StudentCourses values (2,5);
+INSERT INTO StudentCourses values (2,6);
+INSERT INTO StudentCourses values (4,4);
+INSERT INTO StudentCourses values (2,7);
+INSERT INTO StudentCourses values (2,8);
