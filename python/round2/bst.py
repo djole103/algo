@@ -1,4 +1,4 @@
-ass Node(object):
+class Node(object):
 
     def __init__(self, data):
         self.data = data
@@ -33,6 +33,14 @@ def PrintNode(node):
     print(node.data)
     print(node.left.data)
     print(node.right.data)
+
+def calcDepth(node):
+    if node == None:
+        return 0
+    return 1 + max(calcDepth(node.left), calcDepth(node.right))
+
+def 
+
 results = []
 root = Node(5)
 insert(root, 2)
@@ -41,3 +49,6 @@ insert(root, 1)
 insert(root, 3)
 in_order_traversal(root, results)
 print(results)
+print(calcDepth(root))
+print(calcDepth(root.left))
+print(calcDepth(root.right))
