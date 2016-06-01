@@ -1,3 +1,5 @@
+from treeutils import printTreeL
+
 class Node:
         def __init__(self, val):
                 self.val = val
@@ -37,4 +39,5 @@ def minTree(nums, start, end):
 
 TEST = [1,2,3,4,5,6,7,8,9,10,11,12,13]
 tree = minTree(TEST, 0, len(TEST) -1)
-printR(tree)
+#printR(tree)
+printTreeL(tree)
