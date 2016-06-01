@@ -37,7 +37,7 @@ def minTree(nums, start, end):
         node.right = minTree(nums, mid + 1, end)
         return node
 
-TEST = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-tree = minTree(TEST, 0, len(TEST) -1)
+#TEST = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+#tree = minTree(TEST, 0, len(TEST) -1)
 #printR(tree)
-printTreeL(tree)
+#printTreeL(tree)
