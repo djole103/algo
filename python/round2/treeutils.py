@@ -1,8 +1,10 @@
 from itertools import groupby
 
-class Node:
+class BNode:
         def __init__(self, val):
                 self.val = val
+                self.left = None
+                self.right = None
         
 def printTreeL(node):
         level = 0
@@ -23,6 +25,15 @@ def printTreeL(node):
         #lsort = sorted(levels, key=lambda x: x[1])
         #final = groupby(lsort, key=lambda x: x[1])
         #print(list(final))`o
+
+def insertBT(root, val):
+        if root == None:
+                return BNode(val)
+        if val <= root.val:
+                root.left = insertBT(root.left, val)
+        else:
+                root.right = insertBT(root.right, val)
+        return root
 
 def group(l):
         d = {}
