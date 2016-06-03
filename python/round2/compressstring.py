@@ -1,4 +1,4 @@
-s_string(string):
+def compress_string(string):
     # TODO: Implement me
     if string == None: return None
     if len(string) <=2:

@@ -6,11 +6,18 @@ reverseIndex = {"word" : [1,2,3],
                 "what" : [2,5],
                 "is"   : [1,2,4]}
 
+forwardIndex = {1      : {"word": 2, "is": 1},
+                2      : {"what": 4, "no": 1, "is" : 2},
+                3      : {"word": 2, "frog": 10},
+                4      : {"is": 4, "yeah" : 5},
+                5      : {"what": 2}}
+
 def relevantPages(query):
         d = defaultdict(int)
         for word in query:
                 for docID in reverseIndex[word]:
-                        d[docID] += 1
+                        if word in forwardIndex[docID]:
+                                d[docID] += forwardIndex[docID][word]
         return d
 
 def rankTop3(d):
