@@ -1,3 +1,6 @@
+from queue import PriorityQueue
+import math
+
 def findPath(maze, start, end):
         if (maze is None or len(maze) == 0):
                 return None
@@ -20,6 +23,8 @@ def findPath(maze, start, end):
                           (p[0], p[1]+1)]
                 return [v for v in visits if v not in path and validPoint(v[1], v[0])]
 
+        def heur(p):
+                return math.sqrt((p[0] - start[0])**2 + (p[1] - start[1])**2)
  
         def getPathDF(row, col):
                 if not validPoint(row, col):
@@ -49,9 +54,29 @@ def findPath(maze, start, end):
                                 q.append(path + [v]) 
                 return None
 
+        def getPathA(row, col):
+                nonlocal finalPath
+                s = (row, col)
+                if not validPoint(row, col):
+                        return False
+                path = [s]
+                q = PriorityQueue()
+                q.put((heur(s) + 1, path))
+                while(q):
+                        score, path = q.get()
+                        p = path[-1]
+                        if p == start:
+                                finalPath = path
+                                return True
+                        #col, row = p
+                        nextPoints = nextVisits(path, p)
+                        nextPaths = [(heur(x) + len(path), path + [x]) for x in nextPoints]
+                        for np in nextPaths:
+                                q.put(np)
+                return False
 
         #Choose Depth First (DF), Breadth First (BF) or A* (A) for which path calc algo to use
-        if(getPathBF(end[1], end[0])):
+        if(getPathA(end[1], end[0])):
                 return finalPath
         return None
 
@@ -62,4 +87,3 @@ S1 =  (0,0)
 E1 = (2,2)
 
 print(findPath(T1, S1, E1))
-
