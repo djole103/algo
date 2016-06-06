@@ -15,9 +15,9 @@ def findPath(maze, start, end):
 
         def nextVisits(path, p):
                 visits = [(p[0] -1, p[1]),
-                                 (p[0]+1, p[1]),
-                                 (p[0], p[1]-1),
-                                 (p[0], p[1]+1)]
+                          (p[0]+1, p[1]),
+                          (p[0], p[1]-1),
+                          (p[0], p[1]+1)]
                 return [v for v in visits if v not in path and validPoint(v[1], v[0])]
 
  
@@ -33,6 +33,7 @@ def findPath(maze, start, end):
                 return False
 
         def getPathBF(row, col):
+                nonlocal finalPath
                 e = (row, col)
                 path = [e]
                 q = [path]
@@ -40,21 +41,17 @@ def findPath(maze, start, end):
                         path = q.pop()
                         p = path[-1]
                         col, row = p
-                        if p in failedPoints:
-                                continue
                         if p == start:
                                 finalPath = path
                                 return True
                         nextPoints = nextVisits(path, p)
                         for v in nextPoints:
-                                q.append(path + [v])
-                        
+                                q.append(path + [v]) 
                 return None
 
 
         #Choose Depth First (DF), Breadth First (BF) or A* (A) for which path calc algo to use
         if(getPathBF(end[1], end[0])):
-                print(finalPath)
                 return finalPath
         return None
 
