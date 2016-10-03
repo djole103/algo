@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <fstream>
 using namespace std;
 
 const int CHARS = 92;
@@ -8,11 +8,26 @@ const int ASCII_OFFSET = 32;
 const int MAX_LENGTH = 5;
 string PASSWORD; 
 
-bool check_correct(char pw_guess[]){
-  if(string(pw_guess) == PASSWORD){
+bool check_correct(string pw_guess){
+  if(pw_guess == PASSWORD){
     cout << "hahah we kno ur password its " << string(pw_guess) << endl;
     return true;
   }
+  return false;
+}
+
+bool crack_w_dict(int max_length){
+  ifstream common_pws;
+  string pw_guess;
+  common_pws.open("/Users/djole/code/algo/cplus/pw_dictionary");
+  while(getline(common_pws, pw_guess)){
+    if(check_correct(string(pw_guess))){
+      cout << "hahah ur pw 2 basic bro its " << string(pw_guess) << endl;
+      common_pws.close();
+      return true;  
+    }
+  }
+  common_pws.close();
   return false;
 }
 
@@ -39,7 +54,7 @@ bool crack_max_length(int length){
       return true; 
     } 
   }
-  return false; //really shouldn't reach here
+  return false; //really shouldn't reach here ever
 }
 
 int main(){
