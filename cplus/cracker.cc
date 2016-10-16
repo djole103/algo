@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <chrono>
 #include <ctime>
 using namespace std;
 
@@ -70,12 +69,13 @@ int main(){
   if(crack_max_length(MAX_LENGTH)){
     cout << "holy shit we cracked it we're such hackerz hahah hdkfhsj" << endl; 
 
-    clock_t total_time = 1000 * (finish - start) / CLOCKS_PER_SEC;
-    cout << "Cracked in: " << total_time << " ms" << endl;
   } else {
     cout << ":( sade day in hacker town" << endl;
   }
   clock_t finish;
   finish = clock();
+  clock_t total_time = 1000 * (finish - start) / CLOCKS_PER_SEC;
+  cout << "Cracked in: " << total_time << " ms" << endl;
+
   return 1;
 }
