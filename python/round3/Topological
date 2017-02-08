@@ -1,0 +1,21 @@
+Topological sorting is a linear sorting of a directed acyclic graph (DAG) such
+that for every edge uv, u comes before v.
+
+If there is a cycle this is not possible.
+
+Practical applications of this are anything that requires some sort of
+dependency. Scheduling where one event must come before the other. Choosing
+classes that have prerequisites and deciding an order. Including deps for
+an application and ect.
+
+The idea is you must first remove the nodes which don't have outbound
+edges. There are a few algorithms.
+
+Knuth:
+-Make a list of outgoing edges for each node.
+-Add all nodes with empty lists (no dependent edges) to the order.
+-Remove all edges that involved the now removed nodes.
+-Repeat until all nodes added to list. If ever no edgeless node then not a DAG.
+
+-Depth first:
+

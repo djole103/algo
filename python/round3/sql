@@ -1,0 +1,1 @@
+ELECT m.id, m.title, sum(r.number_of_tickets) "sold_tickets" from movies m, reservations r where m.id = r.movie_id group by m.id, m.title order by "sold_tickets" DESC;

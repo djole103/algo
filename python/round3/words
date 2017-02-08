@@ -1,0 +1,6 @@
+import re
+
+def solution(S):
+    lines = re.findall(r"[^\.!\?]+(?=[\.!\?]+)", S)
+        return max([len(filter(bool, line.split(' '))) for line in lines])
+            
